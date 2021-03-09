@@ -7,7 +7,7 @@
   in this file.
 """
 
-from flask import Flask, request, url_for, session, redirect, escape
+from flask import Flask, request, url_for, session, redirect, escape, g
 from flask_api import status
 from flask_json import json_response
 from datetime import datetime, timedelta
@@ -18,7 +18,7 @@ import jwt
 app = Flask(__name__)
 app.secret_key = '#&$*^#YHF#)FH0382'
 
-JWT_SECRET = '#&$*^#YHF#)FH0382'
+JWT_SECRET = app.secret_key
 JWT_ALGORITHM = 'HS256'
 JWT_EXP_DELTA_SECONDS = 20
 
@@ -27,7 +27,7 @@ DB = False
 DB_HOST = ""
 DB_USER = ""
 DB_PWD_HASH = ""
+UD_FILE = "/Users/laneadair/Desktop/Algo-bot-api/python/ud/users.json"
 
 if DEBUG:
   print("FINISHED READING CONFIG")
-  print(app)
